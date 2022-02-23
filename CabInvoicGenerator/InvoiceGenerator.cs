@@ -80,7 +80,7 @@ namespace CabInvoiceGenerator
 
 
         }
-        public double CalculateFare(Ride[] rides)
+        public  InvoiceSummary CalculateFare(Ride[] rides)
         {
             double totalFare = 0;
             try
@@ -97,8 +97,8 @@ namespace CabInvoiceGenerator
                     throw new CabInvoiceException(CabInvoiceException.ExceptionType.NULL_RIDES, "no rides found");
                 }
             }
-            double res = Math.Max(totalFare,MINIMUM_FARE);
-            return res;
+            double res = Math.Max(totalFare, MINIMUM_FARE);
+            return new InvoiceSummary(rides.Length, res) ;
         }
     }
 }
